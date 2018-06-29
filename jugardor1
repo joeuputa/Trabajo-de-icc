@@ -1,4 +1,3 @@
-
 import random
 def dibujo(vida):
     ahorcado = ['''
@@ -160,7 +159,7 @@ def easymode():
     letra = ''
     words = ("acido", "aeropuerto", "alarma", "alegria", "bote", "cafe", "camping", "canoa", "curva","lago", "mesa", "misil", "postre", "radio")
     posicion = random.randint(0, len(words) - 1)
-    palabra = words[posicion].lower()
+    palabra = words[0].lower()
 
     # Separamos la palabra en letras y lo colocamos en una lista
 
@@ -171,39 +170,41 @@ def easymode():
     while True:
         # Mostramos la palabra a adivinar
 
-        print incognito
+        print ' '.join(incognito)
 
         # Pedimos una letra
         letrafake = raw_input('Dame una letra: ')
         letra=letrafake.lower()
-        verificando(letra)
-
-
-        # Comprueba si se ha equivocado
-
-        if letra not in lista_palabra:
-            # fallas
-            vidas = vidas- 1
-            dibujo(vidas) #cambia de dibujo
-            print 'error!!!!'
-            if vidas == 0: #verificando si ya no tienes vidas
-                print 'Has perdido'
-                print palabra
-                break
+        if letra == palabra:
+            print "lo adivinaste en una, mis respetos"
+            break
 
         else:
-            #Adivinado, sustituimos
+            verificando(letra)
+            # Comprueba si se ha equivocado
+            if letra not in lista_palabra:
+                # fallas
+                vidas = vidas- 1
+                dibujo(vidas) #cambia de dibujo
+                print 'error!!!!'
+                if vidas == 0: #verificando si ya no tienes vidas
+                    print 'Has perdido'
+                    print palabra
+                    break
 
-            for pos,valor in enumerate(lista_palabra):
-                if valor == letra:
-                    incognito[pos] = valor #reemplazando el incognito por la palabra encontrada
+            else:
+                #Adivinado, sustituimos
 
-        ## Comprueba si ha terminado la partida
+                for pos,valor in enumerate(lista_palabra):
+                    if valor == letra:
+                        incognito[pos] = valor #reemplazando el incognito por la palabra encontrada
 
-        if lista_palabra == incognito:  # verifica si has ganado
-            print palabra
-            print 'Has ganado'
-            break
+            ## Comprueba si ha terminado la partida
+
+            if lista_palabra == incognito:  # verifica si has ganado
+                print palabra
+                print 'Has ganado'
+                break
 
     return
 def medium():
@@ -225,39 +226,44 @@ def medium():
     while True:
         # Mostramos la palabra a adivinar
 
-        print incognito
+        print ' '.join(incognito)
 
         # Pedimos una letra
 
         letrafake = raw_input('Dame una letra: ')
         letra=letrafake.lower()
-        verificando(letra)
-
-        # Comprueba si se ha equivocado
-
-        if letra not in lista_palabra:
-            # fallas
-            vidas = vidas- 1
-            dibujomedium(vidas)
-            print 'error!!!!'
-            if vidas == 0: #verificando si ya no tienes vidas
-                print 'Has perdido'
-                print palabra
-                break
+        if letra == palabra:
+            print "lo adivinaste en una, mis respetos"
+            break
 
         else:
-            #Adivinado, sustituimos
+            verificando(letra)
 
-            for pos,valor in enumerate(lista_palabra):
-                if valor == letra:
-                    incognito[pos] = valor #reemplazando el incognito por la palabra encontrada
+            # Comprueba si se ha equivocado
 
-        ## Comprueba si ha terminado la partida
+            if letra not in lista_palabra:
+                # fallas
+                vidas = vidas- 1
+                dibujomedium(vidas)
+                print 'error!!!!'
+                if vidas == 0: #verificando si ya no tienes vidas
+                    print 'Has perdido'
+                    print palabra
+                    break
 
-        if lista_palabra == incognito:  # verifica si has ganado
-            print palabra
-            print 'Has ganado'
-            break
+            else:
+                #Adivinado, sustituimos
+
+                for pos,valor in enumerate(lista_palabra):
+                    if valor == letra:
+                        incognito[pos] = valor #reemplazando el incognito por la palabra encontrada
+
+            ## Comprueba si ha terminado la partida
+
+            if lista_palabra == incognito:  # verifica si has ganado
+                print palabra
+                print 'Has ganado'
+                break
 
     return
 def advance():
@@ -279,38 +285,43 @@ def advance():
     while True:
         # Mostramos la palabra a adivinar
 
-        print incognito
+        print ' '.join(incognito)
 
         # Pedimos una letra
 
         letrafake = raw_input('Dame una letra: ')
         letra=letrafake.lower()
-        verificando(letra)
-
-        # Comprueba si se ha equivocado
-
-        if letra not in lista_palabra:
-            # fallas
-            vidas = vidas- 1
-            dibujoadvance(vidas)
-            print 'error!!!!'
-            if vidas == 0: #verificando si ya no tienes vidas
-                print 'Has perdido'
-                print palabra
-                break
+        if letra == palabra:
+            print "lo adivinaste en una, mis respetos"
+            break
 
         else:
-            #Adivinado, sustituimos
+            verificando(letra)
 
-            for pos,valor in enumerate(lista_palabra):
-                if valor == letra:
-                    incognito[pos] = valor #reemplazando el incognito por la palabra encontrada
+            # Comprueba si se ha equivocado
 
-        ## Comprueba si ha terminado la partida
+            if letra not in lista_palabra:
+                # fallas
+                vidas = vidas- 1
+                dibujoadvance(vidas)
+                print 'error!!!!'
+                if vidas == 0: #verificando si ya no tienes vidas
+                    print 'Has perdido'
+                    print palabra
+                    break
 
-        if lista_palabra == incognito:  # verifica si has ganado
-            print palabra
-            print 'Has ganado'
-            break
+            else:
+                #Adivinado, sustituimos
+
+                for pos,valor in enumerate(lista_palabra):
+                    if valor == letra:
+                        incognito[pos] = valor #reemplazando el incognito por la palabra encontrada
+
+            ## Comprueba si ha terminado la partida
+
+            if lista_palabra == incognito:  # verifica si has ganado
+                print palabra
+                print 'Has ganado'
+                break
 
     return
