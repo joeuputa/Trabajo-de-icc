@@ -1,7 +1,7 @@
 import random
 def menu(): #menu general
     print("""
-AHORCADOS
+AHORCADO
 
 SELECCIONA UNA DE LAS OPCIONES:
 1. Un jugador
@@ -15,9 +15,8 @@ SELECCIONA UNA DE LAS OPCIONES:
     return selection
 def menu2(): #la dificultad para el 1 jugador
    print("""
-Welcome to Hangman!
 
-Select a difficulty:
+selecciona la dificultad:
 1. facil (7 vidas)
 2. medio (5 vidas)
 3. avanzado (3 vidas)
@@ -32,10 +31,10 @@ def verificando(tuletra): #identificando si es una letra
     cantidad= len(tuletra)
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?')
     if cantidad>1:
-        print "eso no es una letra, sanazo, una vida menos pa' ti."
+        print "esa no es la palabra."
         return
     elif tuletra in numero:
-        print "eso no es una letra, sanazo, una vida menos pa' ti."
+        print "eso no es una letra."
         return
     else:
         tuletra.lower()
@@ -43,116 +42,129 @@ def verificando(tuletra): #identificando si es una letra
 def verificandopalabrasecreta(palabrasecretareal):  # identificando si la palabra secreta ingresada tiene un numero
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=','+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?', ''' " '''," ' ")
     if len(palabrasecretareal)==0:
-        print ('comando inacceptable')
+        print ('no hay nada, escriba algo')
         return False
     for contador in range(0, 43):
         if numero[contador] in palabrasecretareal:
-            print('comando inacceptable')
+            print('solo se permite una palabra (solo debe contener letras)')
             return False
 
 #jugador 2
-ahorcado_dibujo = ['''
-      +---+
-      |   |
-          |
-          |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-          |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-      |   |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-     /|   |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-     /|\  |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-     /|\  |
-     /    |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-     /|\  |
-     / \  |
-          |
-    =========''']  # dibujo del ahorcado
-def jugador2():
+
+def jugador1():
     listaPalAdiv = []
     listaPalMost = []
-
-    palabrasecreta = raw_input("ingresa la palabra secreta")
+    vidas = 7
+    print ('jugador 2')
+    palabrasecreta = raw_input("ingresa la palabra secreta: ")
     while verificandopalabrasecreta(palabrasecreta) == False:
-        palabrasecreta = raw_input("ingresa la palabra secreta")
+        palabrasecreta = raw_input("ingresa la palabra secreta: ")
     else:
         palabrasecretareal = palabrasecreta.lower()
         listaPalAdiv = list(palabrasecretareal)  # agrega la palabra a una lista
-    vidas = 7
-    dib = 0
+
 
     for num in range(100):  # limpiar la patalla
         print
-    print ('player 2 turn')
+    print ('jugador 1')
 
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
         listaPalMost.append('_')
 
-    while vidas > 0:
-        print (ahorcado_dibujo[dib])
+    while True:
+        dibujo(vidas)
+        print ("tienes", vidas, "vidas")
         print (' '.join(listaPalMost))
         # adivinando las letras
-        tuletra_fake = raw_input("introduce una letra")
+        tuletra_fake = raw_input("introduce una letra: ")
         tuletra=tuletra_fake.lower()
         if tuletra == palabrasecretareal:
-            print "lo adivinaste en una, mis respetos"
+            print "lo adivinaste, ganaste"
             break
 
         else:
             verificando(tuletra)
 
-            for letra in palabrasecretareal:  # si es falso solo imprimira _
-                if tuletra in listaPalAdiv:
-                    for key, value in enumerate(listaPalAdiv):
-                        if value == tuletra:
-                            listaPalMost[key] = value
-                else:
-                    print("_")
             if tuletra not in listaPalAdiv:
-                vidas -= 1
-                dib += 1
+                # fallas
+                vidas = vidas- 1
+                print 'letra equivocada'
+                if vidas == 0: #verificando si ya no tienes vidas
+                    print 'Has perdido'
+                    print palabrasecretareal
+                    break
 
-                print ("error")
-                print ("tu tienes", vidas, "vidas")
-            if vidas == 0:
-                print ("perdiste")
-                break
+            else:
+                #Adivinado, sustituimos
+
+                for pos,valor in enumerate(listaPalAdiv):
+                    if valor == tuletra:
+                        listaPalMost[pos] = valor #reemplazando el incognito por la palabra encontrada
+
+            ## Comprueba si ha terminado la partida
+
             if listaPalAdiv==listaPalMost:
                 print "ganaste"
                 break
+
+    return
+
+def jugador2():
+    listaPalAdiv = []
+    listaPalMost = []
+    vidas = 7
+    print ('jugador 1')
+    palabrasecreta = raw_input("ingresa la palabra secreta: ")
+    while verificandopalabrasecreta(palabrasecreta) == False:
+        palabrasecreta = raw_input("ingresa la palabra secreta: ")
+    else:
+        palabrasecretareal = palabrasecreta.lower()
+        listaPalAdiv = list(palabrasecretareal)  # agrega la palabra a una lista
+
+
+    for num in range(100):  # limpiar la patalla
+        print
+    print ('jugador 2')
+
+    for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
+        listaPalMost.append('_')
+
+    while True:
+        dibujo(vidas)
+        print ("tienes", vidas, "vidas")
+        print (' '.join(listaPalMost))
+        # adivinando las letras
+        tuletra_fake = raw_input("introduce una letra: ")
+        tuletra=tuletra_fake.lower()
+        if tuletra == palabrasecretareal:
+            print "lo adivinaste, ganaste"
+            break
+
+        else:
+            verificando(tuletra)
+
+            if tuletra not in listaPalAdiv:
+                # fallas
+                vidas = vidas- 1
+                print 'letra equivocada'
+                if vidas == 0: #verificando si ya no tienes vidas
+                    print 'Has perdido'
+                    print palabrasecretareal
+                    break
+
+            else:
+                #Adivinado, sustituimos
+
+                for pos,valor in enumerate(listaPalAdiv):
+                    if valor == tuletra:
+                        listaPalMost[pos] = valor #reemplazando el incognito por la palabra encontrada
+
+            ## Comprueba si ha terminado la partida
+
+            if listaPalAdiv==listaPalMost:
+                print "ganaste"
+                break
+    jugador1()
 
     return
 
@@ -317,13 +329,15 @@ def easymode():
     while True:
         # Mostramos la palabra a adivinar
 
+        dibujo(vidas)  # cambia de dibujo
+        print "tienes", vidas, "vidas"
         print ' '.join(incognito)
 
         # Pedimos una letra
         letrafake = raw_input('Dame una letra: ')
         letra=letrafake.lower()
         if letra == palabra:
-            print "lo adivinaste en una, mis respetos"
+            print "lo adivinaste, mis respetos"
             break
 
         else:
@@ -332,8 +346,8 @@ def easymode():
             if letra not in lista_palabra:
                 # fallas
                 vidas = vidas- 1
-                dibujo(vidas) #cambia de dibujo
-                print 'error!!!!'
+                print 'letra equivocada'
+
                 if vidas == 0: #verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabra
@@ -376,34 +390,36 @@ def medium():
         print ' '.join(incognito)
 
         # Pedimos una letra
+        dibujomedium(vidas)
+        print "tienes", vidas, "vidas"
+        print ' '.join(incognito)
 
+        # Pedimos una letra
         letrafake = raw_input('Dame una letra: ')
-        letra=letrafake.lower()
+        letra = letrafake.lower()
         if letra == palabra:
-            print "lo adivinaste en una, mis respetos"
+            print "lo adivinaste, mis respetos"
             break
 
         else:
             verificando(letra)
-
             # Comprueba si se ha equivocado
-
             if letra not in lista_palabra:
                 # fallas
-                vidas = vidas- 1
-                dibujomedium(vidas)
-                print 'error!!!!'
-                if vidas == 0: #verificando si ya no tienes vidas
+                vidas = vidas - 1
+                print 'letra equivocada'
+
+                if vidas == 0:  # verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabra
                     break
 
             else:
-                #Adivinado, sustituimos
+                # Adivinado, sustituimos
 
-                for pos,valor in enumerate(lista_palabra):
+                for pos, valor in enumerate(lista_palabra):
                     if valor == letra:
-                        incognito[pos] = valor #reemplazando el incognito por la palabra encontrada
+                        incognito[pos] = valor  # reemplazando el incognito por la palabra encontrada
 
             ## Comprueba si ha terminado la partida
 
@@ -411,7 +427,6 @@ def medium():
                 print palabra
                 print 'Has ganado'
                 break
-
     return
 def advance():
     lista_palabra = []
@@ -421,7 +436,7 @@ def advance():
 
     words = ("Desoxirribonucleico", "Hipopotomonstrosesquipedaliofobia", "Electrodomestico", "Paralelepipedo", "Metilendioximetanfetamina", "tu", "te", "yo", "Electrocardiograma")
     posicion = random.randint(0, len(words) - 1)
-    palabra = words[6].lower()
+    palabra = words[posicion].lower()
 
     # Separamos la palabra en letras y lo colocamos en una lista
 
@@ -435,34 +450,36 @@ def advance():
         print ' '.join(incognito)
 
         # Pedimos una letra
+        dibujoadvance(vidas)
+        print "tienes", vidas, "vidas"
+        print ' '.join(incognito)
 
+        # Pedimos una letra
         letrafake = raw_input('Dame una letra: ')
-        letra=letrafake.lower()
+        letra = letrafake.lower()
         if letra == palabra:
-            print "lo adivinaste en una, mis respetos"
+            print "lo adivinaste, mis respetos"
             break
 
         else:
             verificando(letra)
-
             # Comprueba si se ha equivocado
-
             if letra not in lista_palabra:
                 # fallas
-                vidas = vidas- 1
-                dibujoadvance(vidas)
-                print 'error!!!!'
-                if vidas == 0: #verificando si ya no tienes vidas
+                vidas = vidas - 1
+                print 'letra equivocada'
+
+                if vidas == 0:  # verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabra
                     break
 
             else:
-                #Adivinado, sustituimos
+                # Adivinado, sustituimos
 
-                for pos,valor in enumerate(lista_palabra):
+                for pos, valor in enumerate(lista_palabra):
                     if valor == letra:
-                        incognito[pos] = valor #reemplazando el incognito por la palabra encontrada
+                        incognito[pos] = valor  # reemplazando el incognito por la palabra encontrada
 
             ## Comprueba si ha terminado la partida
 
@@ -470,7 +487,6 @@ def advance():
                 print palabra
                 print 'Has ganado'
                 break
-
     return
 
 #el juego
@@ -482,16 +498,16 @@ def ahorcado(): #el juego esta listo. eso creo?
          select = menu2()
          while (select != '4'):
              if (select == '1'):
-                 print easymode()
+                 easymode()
              elif (select == '2'):
-                 print medium()
+                 medium()
              elif (select == '3'):
-                 print advance()
+                 advance()
 
              select = menu2()
 
       elif(select == '2'):
-         print jugador2() # se dirige a la funcion de dos jugadores
+            jugador2() # se dirige a la funcion de dos jugadores
 
       select = menu()
 
