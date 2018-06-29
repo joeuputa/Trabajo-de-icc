@@ -64,15 +64,15 @@ def dibujo(vida):
         print ahorcado[5]
     elif vida == 0:
         print ahorcado[6]
-        
+
 def verificando(tuletra): #identificando si es una letra
     cantidad= len(tuletra)
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?')
     if cantidad>1:
-        print "eso no es la palabra, sanazo, una vida menos pa' ti."
+        print "esa no es la palabra."
         return
     elif tuletra in numero:
-        print "eso no es una letra, sanazo, una vida menos pa' ti."
+        print "eso no es una letra."
         return
     else:
         tuletra.lower()
@@ -81,21 +81,21 @@ def verificando(tuletra): #identificando si es una letra
 def verificandopalabrasecreta(palabrasecretareal):  # identificando si la palabra secreta ingresada tiene un numero
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=','+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?', ''' " '''," ' ")
     if len(palabrasecretareal)==0:
-        print ('comando inacceptable')
+        print ('no hay nada, escriba algo')
         return False
     for contador in range(0, 43):
         if numero[contador] in palabrasecretareal:
-            print('comando inacceptable')
+            print('solo se permite una palabra (solo debe contener letras)')
             return False
-        
-def jugador2():
+
+def jugador1():
     listaPalAdiv = []
     listaPalMost = []
     vidas = 7
-
-    palabrasecreta = raw_input("ingresa la palabra secreta")
+    print ('jugador 2')
+    palabrasecreta = raw_input("ingresa la palabra secreta: ")
     while verificandopalabrasecreta(palabrasecreta) == False:
-        palabrasecreta = raw_input("ingresa la palabra secreta")
+        palabrasecreta = raw_input("ingresa la palabra secreta: ")
     else:
         palabrasecretareal = palabrasecreta.lower()
         listaPalAdiv = list(palabrasecretareal)  # agrega la palabra a una lista
@@ -103,19 +103,20 @@ def jugador2():
 
     for num in range(100):  # limpiar la patalla
         print
-    print ('player 2 turn')
+    print ('jugador 1')
 
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
         listaPalMost.append('_')
 
     while True:
         dibujo(vidas)
+        print ("tienes", vidas, "vidas")
         print (' '.join(listaPalMost))
         # adivinando las letras
-        tuletra_fake = raw_input("introduce una letra")
+        tuletra_fake = raw_input("introduce una letra: ")
         tuletra=tuletra_fake.lower()
         if tuletra == palabrasecretareal:
-            print "lo adivinaste en una, mis respetos"
+            print "lo adivinaste, ganaste"
             break
 
         else:
@@ -124,7 +125,7 @@ def jugador2():
             if tuletra not in listaPalAdiv:
                 # fallas
                 vidas = vidas- 1
-                print 'error!!!!'
+                print 'letra equivocada'
                 if vidas == 0: #verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabrasecretareal
@@ -145,4 +146,63 @@ def jugador2():
 
     return
 
-jugador2()
+def jugador2():
+    listaPalAdiv = []
+    listaPalMost = []
+    vidas = 7
+    print ('jugador 1')
+    palabrasecreta = raw_input("ingresa la palabra secreta: ")
+    while verificandopalabrasecreta(palabrasecreta) == False:
+        palabrasecreta = raw_input("ingresa la palabra secreta: ")
+    else:
+        palabrasecretareal = palabrasecreta.lower()
+        listaPalAdiv = list(palabrasecretareal)  # agrega la palabra a una lista
+
+
+    for num in range(100):  # limpiar la patalla
+        print
+    print ('jugador 2')
+
+    for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
+        listaPalMost.append('_')
+
+    while True:
+        dibujo(vidas)
+        print ("tienes", vidas, "vidas")
+        print (' '.join(listaPalMost))
+        # adivinando las letras
+        tuletra_fake = raw_input("introduce una letra: ")
+        tuletra=tuletra_fake.lower()
+        if tuletra == palabrasecretareal:
+            print "lo adivinaste, ganaste"
+            break
+
+        else:
+            verificando(tuletra)
+
+            if tuletra not in listaPalAdiv:
+                # fallas
+                vidas = vidas- 1
+                print 'letra equivocada'
+                if vidas == 0: #verificando si ya no tienes vidas
+                    print 'Has perdido'
+                    print palabrasecretareal
+                    break
+
+            else:
+                #Adivinado, sustituimos
+
+                for pos,valor in enumerate(listaPalAdiv):
+                    if valor == tuletra:
+                        listaPalMost[pos] = valor #reemplazando el incognito por la palabra encontrada
+
+            ## Comprueba si ha terminado la partida
+
+            if listaPalAdiv==listaPalMost:
+                print "ganaste"
+                break
+    jugador1()
+
+    return
+
+
