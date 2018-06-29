@@ -1,6 +1,3 @@
-listaPalAdiv = []
-listaPalMost = []
-
 
 def verificando(tuletra): #identificando si es una letra
     cantidad= len(tuletra)
@@ -78,7 +75,10 @@ ahorcado_dibujo = ['''
     =========''']  # dibujo del ahorcado
 
 
-def jugar():
+def jugador2():
+    listaPalAdiv = []
+    listaPalMost = []
+
     palabrasecreta = raw_input("ingresa la palabra secreta")
     while verificandopalabrasecreta(palabrasecreta) == False:
         palabrasecreta = raw_input("ingresa la palabra secreta")
@@ -99,26 +99,30 @@ def jugar():
         print (ahorcado_dibujo[dib])
         print (' '.join(listaPalMost))
         # adivinando las letras
-        tuletra = raw_input("introduce una letra")
-        verificando(tuletra)
+        tuletra_fake = raw_input("introduce una letra")
+        tuletra=tuletra_fake.lower()
+        if tuletra == palabrasecretareal:
+            print "lo adivinaste en una, mis respetos"
+            break
 
-        for letra in palabrasecretareal:  # si es falso solo imprimira _
-            if tuletra in listaPalAdiv:
-                for key, value in enumerate(listaPalAdiv):
-                    if value == tuletra:
-                        listaPalMost[key] = value
+        else:
+            verificando(tuletra)
+
+            for letra in palabrasecretareal:  # si es falso solo imprimira _
+                if tuletra in listaPalAdiv:
+                    for key, value in enumerate(listaPalAdiv):
+                        if value == tuletra:
+                            listaPalMost[key] = value
+                else:
+                    print("_")
+            if tuletra not in listaPalAdiv:
+                vidas -= 1
+                dib += 1
+
+                print ("error")
+                print ("tu tienes", vidas, "vidas")
+            if vidas == 0:
+                print ("perdiste")
             else:
-                print("_")
-        if tuletra not in listaPalAdiv:
-            vidas -= 1
-            dib += 1
-
-            print ("error")
-            print ("tu tienes", vidas, "vidas")
-        if vidas == 0:
-            print ("perdiste")
-    else:
-        print ("gracias por jugar")
-
-
-jugar()
+                print ("gracias por jugar")
+    return 
