@@ -1,3 +1,4 @@
+
 import random
 def dibujo(vida):
     ahorcado = ['''
@@ -144,7 +145,7 @@ def verificando(tuletra): #identificando si es una letra
     cantidad= len(tuletra)
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?')
     if cantidad>1:
-        print "eso no es una letra, sanazo, una vida menos pa' ti."
+        print "eso no es la palabra, sanazo, una vida menos pa' ti."
         return
     elif tuletra in numero:
         print "eso no es una letra, sanazo, una vida menos pa' ti."
@@ -159,7 +160,7 @@ def easymode():
     letra = ''
     words = ("acido", "aeropuerto", "alarma", "alegria", "bote", "cafe", "camping", "canoa", "curva","lago", "mesa", "misil", "postre", "radio")
     posicion = random.randint(0, len(words) - 1)
-    palabra = words[0].lower()
+    palabra = words[posicion].lower()
 
     # Separamos la palabra en letras y lo colocamos en una lista
 
@@ -170,6 +171,7 @@ def easymode():
     while True:
         # Mostramos la palabra a adivinar
 
+        dibujo(vidas)  # cambia de dibujo
         print ' '.join(incognito)
 
         # Pedimos una letra
@@ -185,7 +187,7 @@ def easymode():
             if letra not in lista_palabra:
                 # fallas
                 vidas = vidas- 1
-                dibujo(vidas) #cambia de dibujo
+
                 print 'error!!!!'
                 if vidas == 0: #verificando si ya no tienes vidas
                     print 'Has perdido'
@@ -229,7 +231,7 @@ def medium():
         print ' '.join(incognito)
 
         # Pedimos una letra
-
+        dibujomedium(vidas)
         letrafake = raw_input('Dame una letra: ')
         letra=letrafake.lower()
         if letra == palabra:
@@ -244,7 +246,7 @@ def medium():
             if letra not in lista_palabra:
                 # fallas
                 vidas = vidas- 1
-                dibujomedium(vidas)
+
                 print 'error!!!!'
                 if vidas == 0: #verificando si ya no tienes vidas
                     print 'Has perdido'
@@ -288,7 +290,7 @@ def advance():
         print ' '.join(incognito)
 
         # Pedimos una letra
-
+        dibujoadvance(vidas)
         letrafake = raw_input('Dame una letra: ')
         letra=letrafake.lower()
         if letra == palabra:
@@ -303,7 +305,7 @@ def advance():
             if letra not in lista_palabra:
                 # fallas
                 vidas = vidas- 1
-                dibujoadvance(vidas)
+
                 print 'error!!!!'
                 if vidas == 0: #verificando si ya no tienes vidas
                     print 'Has perdido'
@@ -325,3 +327,4 @@ def advance():
                 break
 
     return
+
