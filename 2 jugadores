@@ -1,5 +1,70 @@
 
-
+def dibujo(vida):
+    ahorcado = ['''
+          +---+
+          |   |
+              |
+              |
+              |
+              |
+        =========''', '''
+          +---+
+          |   |
+          O   |
+              |
+              |
+              |
+        =========''', '''
+          +---+
+          |   |
+          O   |
+          |   |
+              |
+              |
+        =========''', '''
+          +---+
+          |   |
+          O   |
+         /|   |
+              |
+              |
+        =========''', '''
+          +---+
+          |   |
+          O   |
+         /|\  |
+              |
+              |
+        =========''', '''
+          +---+
+          |   |
+          O   |
+         /|\  |
+         /    |
+              |
+        =========''', '''
+          +---+
+          |   |
+          O   |
+         /|\  |
+         / \  |
+              |
+        =========''']
+    if vida ==6:
+        print ahorcado [0]
+    elif vida ==5:
+        print ahorcado[1]
+    elif vida == 4:
+        print ahorcado[2]
+    elif vida == 3:
+        print ahorcado[3]
+    elif vida == 2:
+        print ahorcado[4]
+    elif vida == 1:
+        print ahorcado[5]
+    elif vida == 0:
+        print ahorcado[6]
+        
 def verificando(tuletra): #identificando si es una letra
     cantidad= len(tuletra)
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?')
@@ -22,63 +87,11 @@ def verificandopalabrasecreta(palabrasecretareal):  # identificando si la palabr
         if numero[contador] in palabrasecretareal:
             print('comando inacceptable')
             return False
-
-
-ahorcado_dibujo = ['''
-      +---+
-      |   |
-          |
-          |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-          |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-      |   |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-     /|   |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-     /|\  |
-          |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-     /|\  |
-     /    |
-          |
-    =========''', '''
-      +---+
-      |   |
-      O   |
-     /|\  |
-     / \  |
-          |
-    =========''']  # dibujo del ahorcado
-
-
+        
 def jugador2():
     listaPalAdiv = []
     listaPalMost = []
+    vidas = 7
 
     palabrasecreta = raw_input("ingresa la palabra secreta")
     while verificandopalabrasecreta(palabrasecreta) == False:
@@ -86,8 +99,7 @@ def jugador2():
     else:
         palabrasecretareal = palabrasecreta.lower()
         listaPalAdiv = list(palabrasecretareal)  # agrega la palabra a una lista
-    vidas = 7
-    dib = 0
+
 
     for num in range(100):  # limpiar la patalla
         print
@@ -96,8 +108,8 @@ def jugador2():
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
         listaPalMost.append('_')
 
-    while vidas > 0:
-        print (ahorcado_dibujo[dib])
+    while True:
+        dibujo(vidas)
         print (' '.join(listaPalMost))
         # adivinando las letras
         tuletra_fake = raw_input("introduce una letra")
@@ -109,25 +121,28 @@ def jugador2():
         else:
             verificando(tuletra)
 
-            for letra in palabrasecretareal:  # si es falso solo imprimira _
-                if tuletra in listaPalAdiv:
-                    for key, value in enumerate(listaPalAdiv):
-                        if value == tuletra:
-                            listaPalMost[key] = value
-                else:
-                    print("_")
             if tuletra not in listaPalAdiv:
-                vidas -= 1
-                dib += 1
+                # fallas
+                vidas = vidas- 1
+                print 'error!!!!'
+                if vidas == 0: #verificando si ya no tienes vidas
+                    print 'Has perdido'
+                    print palabrasecretareal
+                    break
 
-                print ("error")
-                print ("tu tienes", vidas, "vidas")
-            if vidas == 0:
-                print ("perdiste")
-                break
+            else:
+                #Adivinado, sustituimos
+
+                for pos,valor in enumerate(listaPalAdiv):
+                    if valor == tuletra:
+                        listaPalMost[pos] = valor #reemplazando el incognito por la palabra encontrada
+
+            ## Comprueba si ha terminado la partida
+
             if listaPalAdiv==listaPalMost:
                 print "ganaste"
                 break
 
     return
 
+jugador2()
