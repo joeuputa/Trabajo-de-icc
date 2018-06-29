@@ -16,8 +16,11 @@ def verificando(tuletra): #identificando si es una letra
     return
 
 def verificandopalabrasecreta(palabrasecretareal):  # identificando si la palabra secreta ingresada tiene un numero
-    numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=','+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?', ''' " ''',''," ' ")
-    for contador in range(0, 44):
+    numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=','+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?', ''' " '''," ' ")
+    if len(palabrasecretareal)==0:
+        print ('comando inacceptable')
+        return False
+    for contador in range(0, 43):
         if numero[contador] in palabrasecretareal:
             print('comando inacceptable')
             return False
