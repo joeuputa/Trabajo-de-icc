@@ -1,20 +1,27 @@
 listaPalAdiv = []
 listaPalMost = []
 
+
 def verificando(tuletra): #identificando si es una letra
     cantidad= len(tuletra)
+    numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?')
     if cantidad>1:
-        print ("eso no es una letra, sanazo, una vida menos pa' ti.")
+        print "eso no es una letra, sanazo, una vida menos pa' ti."
+        return
+    elif tuletra in numero:
+        print "eso no es una letra, sanazo, una vida menos pa' ti."
         return
     else:
         tuletra.lower()
     return
-def verificandopalabrasecreta(palabrasecretareal): #identificando si la palabra secreta ingresada tiene un numero
-    numero=('0','1','2','3','4','5','6','7','8','9','!','@','#','$','%','^','&','*','(',')','-','_','=','+','`','~',' ','[','{',']','}','|',':',';',"'",'<',',','.','>','/','?')
-    for contador in range (0,41):
-        if numero[contador]in palabrasecretareal:
-            print( 'comando inacceptable')
+
+def verificandopalabrasecreta(palabrasecretareal):  # identificando si la palabra secreta ingresada tiene un numero
+    numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=','+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?', ''' " ''',''," ' ")
+    for contador in range(0, 44):
+        if numero[contador] in palabrasecretareal:
+            print('comando inacceptable')
             return False
+
 
 ahorcado_dibujo = ['''
       +---+
@@ -65,45 +72,44 @@ ahorcado_dibujo = ['''
      /|\  |
      / \  |
           |
-    =========''']#dibujo del ahorcado
+    =========''']  # dibujo del ahorcado
+
 
 def jugar():
-
-    palabrasecreta = input("ingresa la palabra secreta")
-    while verificandopalabrasecreta(palabrasecreta)== False:
-        palabrasecreta = input("ingresa la palabra secreta")
+    palabrasecreta = raw_input("ingresa la palabra secreta")
+    while verificandopalabrasecreta(palabrasecreta) == False:
+        palabrasecreta = raw_input("ingresa la palabra secreta")
     else:
         palabrasecretareal = palabrasecreta.lower()
         listaPalAdiv = list(palabrasecretareal)  # agrega la palabra a una lista
     vidas = 7
     dib = 0
 
-    for num  in range (100): #limpiar la patalla
-        print()
+    for num in range(100):  # limpiar la patalla
+        print
     print ('player 2 turn')
 
-    for item in listaPalAdiv: # agrega '_' por cada letra que haya en la otra lista
-     listaPalMost.append('_')
+    for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
+        listaPalMost.append('_')
 
     while vidas > 0:
         print (ahorcado_dibujo[dib])
         print (' '.join(listaPalMost))
         # adivinando las letras
-        tuletra = input("introduce una letra")
+        tuletra = raw_input("introduce una letra")
         verificando(tuletra)
-
 
         for letra in palabrasecretareal:  # si es falso solo imprimira _
             if tuletra in listaPalAdiv:
                 for key, value in enumerate(listaPalAdiv):
-                 if value == tuletra:
-                  listaPalMost[key] = value
+                    if value == tuletra:
+                        listaPalMost[key] = value
             else:
-                print( "_")
+                print("_")
         if tuletra not in listaPalAdiv:
             vidas -= 1
             dib += 1
-            
+
             print ("error")
             print ("tu tienes", vidas, "vidas")
         if vidas == 0:
@@ -111,5 +117,5 @@ def jugar():
     else:
         print ("gracias por jugar")
 
-jugar()
 
+jugar()
