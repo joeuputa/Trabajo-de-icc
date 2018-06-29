@@ -9,7 +9,7 @@ SELECCIONA UNA DE LAS OPCIONES:
 3. Salir
 
     """)
-    selection = int(input("OPCION(1-3): "))
+    selection = raw_input("OPCION(1-3): ")
 
     return selection
 
@@ -20,34 +20,33 @@ Welcome to Hangman!
 Select a difficulty:
 1. facil (7 vidas)
 2. medio (5 vidas)
-3. avanzado (3 Misses)
+3. avanzado (3 vidas)
 
 4. regresar
 """)
-   selection = int(input("OPCION(1-4)?: "))
+   selection = raw_input("OPCION(1-4): ")
    return selection
 
 def ahorcado(): #el juego esta listo. eso creo?
    select = menu()
-   while(select != 3):
-      if(select == 1):
+   while(select != '3'):
+      if(select == '1'):
          print 'jugador 1' #se dirige a la funcion de un jugador
          select = menu2()
-         while (select != 4):
-             if (select == 1):
+         while (select != '4'):
+             if (select == '1'):
                  print 'easyMode'
-             elif (select == 2):
+             elif (select == '2'):
                  print 'medium'
-             elif (select == 3):
+             elif (select == '3'):
                  print 'advanced'
 
              select = menu2()
 
-      elif(select == 2):
+      elif(select == '2'):
          print 'jugador 2' # se dirige a la funcion de dos jugadores
 
       select = menu()
 
    print("Fuera de aca, esto no es apto para sanazos")
 
-ahorcado() 
