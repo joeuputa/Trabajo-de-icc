@@ -76,6 +76,7 @@ def jugar():
         palabrasecretareal = palabrasecreta.lower()
         listaPalAdiv = list(palabrasecretareal)  # agrega la palabra a una lista
     vidas = 7
+    dib = 0
 
     for num  in range (100): #limpiar la patalla
         print()
@@ -85,6 +86,7 @@ def jugar():
      listaPalMost.append('_')
 
     while vidas > 0:
+        print (ahorcado_dibujo[dib])
         print (' '.join(listaPalMost))
         # adivinando las letras
         tuletra = input("introduce una letra")
@@ -100,6 +102,8 @@ def jugar():
                 print( "_")
         if tuletra not in listaPalAdiv:
             vidas -= 1
+            dib += 1
+            
             print ("error")
             print ("tu tienes", vidas, "vidas")
         if vidas == 0:
