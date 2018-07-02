@@ -1,3 +1,4 @@
+import time as t
 import random
 def menu(): #menu general
     print("""
@@ -50,12 +51,13 @@ def verificandopalabrasecreta(palabrasecretareal):  # identificando si la palabr
             return False
 
 #jugador 2
-
+##esta funcion
 def jugador1():
     listaPalAdiv = []
     listaPalMost = []
     vidas = 7
     print ('jugador 2')
+    t.sleep(1.0)
     palabrasecreta = raw_input("ingresa la palabra secreta: ")
     while verificandopalabrasecreta(palabrasecreta) == False:
         palabrasecreta = raw_input("ingresa la palabra secreta: ")
@@ -67,11 +69,10 @@ def jugador1():
     for num in range(100):  # limpiar la patalla
         print
     print ('jugador 1')
-
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
         listaPalMost.append('_')
 
-    while True:
+    while vidas>0:
         dibujo(vidas)
         print ("tienes", vidas, "vidas")
         print (' '.join(listaPalMost))
@@ -80,6 +81,8 @@ def jugador1():
         tuletra=tuletra_fake.lower()
         if tuletra == palabrasecretareal:
             print "lo adivinaste, ganaste"
+
+            print "acabo tu turno"
             break
 
         else:
@@ -92,6 +95,8 @@ def jugador1():
                 if vidas == 0: #verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabrasecretareal
+
+                    print "acabo tu turno"
                     break
 
             else:
@@ -105,6 +110,8 @@ def jugador1():
 
             if listaPalAdiv==listaPalMost:
                 print "ganaste"
+
+                print "acabo tu turno."
                 break
 
     return
@@ -129,7 +136,7 @@ def jugador2():
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
         listaPalMost.append('_')
 
-    while True:
+    while vidas>0:
         dibujo(vidas)
         print ("tienes", vidas, "vidas")
         print (' '.join(listaPalMost))
@@ -138,6 +145,8 @@ def jugador2():
         tuletra=tuletra_fake.lower()
         if tuletra == palabrasecretareal:
             print "lo adivinaste, ganaste"
+
+            print 'Fin del juego.'
             break
 
         else:
@@ -150,6 +159,8 @@ def jugador2():
                 if vidas == 0: #verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabrasecretareal
+
+                    print 'Fin del juego.'
                     break
 
             else:
@@ -163,6 +174,9 @@ def jugador2():
 
             if listaPalAdiv==listaPalMost:
                 print "ganaste"
+
+
+                print 'Fin del juego.'
                 break
     jugador1()
 
@@ -338,6 +352,8 @@ def easymode():
         letra=letrafake.lower()
         if letra == palabra:
             print "lo adivinaste, mis respetos"
+
+            print 'Fin del juego.'
             break
 
         else:
@@ -351,6 +367,8 @@ def easymode():
                 if vidas == 0: #verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabra
+
+                    print 'Fin del juego.'
                     break
 
             else:
@@ -365,6 +383,8 @@ def easymode():
             if lista_palabra == incognito:  # verifica si has ganado
                 print palabra
                 print 'Has ganado'
+
+                print 'Fin del juego.'
                 break
 
     return
@@ -387,8 +407,6 @@ def medium():
     while True:
         # Mostramos la palabra a adivinar
 
-        print ' '.join(incognito)
-
         # Pedimos una letra
         dibujomedium(vidas)
         print "tienes", vidas, "vidas"
@@ -399,6 +417,8 @@ def medium():
         letra = letrafake.lower()
         if letra == palabra:
             print "lo adivinaste, mis respetos"
+
+            print 'Fin del juego.'
             break
 
         else:
@@ -412,6 +432,8 @@ def medium():
                 if vidas == 0:  # verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabra
+
+                    print 'Fin del juego.'
                     break
 
             else:
@@ -426,6 +448,8 @@ def medium():
             if lista_palabra == incognito:  # verifica si has ganado
                 print palabra
                 print 'Has ganado'
+
+                print 'Fin del juego.'
                 break
     return
 def advance():
@@ -447,7 +471,6 @@ def advance():
     while True:
         # Mostramos la palabra a adivinar
 
-        print ' '.join(incognito)
 
         # Pedimos una letra
         dibujoadvance(vidas)
@@ -459,6 +482,8 @@ def advance():
         letra = letrafake.lower()
         if letra == palabra:
             print "lo adivinaste, mis respetos"
+
+            print 'Fin del juego.'
             break
 
         else:
@@ -472,6 +497,8 @@ def advance():
                 if vidas == 0:  # verificando si ya no tienes vidas
                     print 'Has perdido'
                     print palabra
+
+                    print 'Fin del juego.'
                     break
 
             else:
@@ -486,6 +513,8 @@ def advance():
             if lista_palabra == incognito:  # verifica si has ganado
                 print palabra
                 print 'Has ganado'
+
+                print 'Fin del juego.'
                 break
     return
 
@@ -511,6 +540,6 @@ def ahorcado(): #el juego esta listo. eso creo?
 
       select = menu()
 
-   print("Fuera de aca, esto no es apto para sanazos")
+   print("adios.")
 
 ahorcado()
