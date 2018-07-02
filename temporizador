@@ -5,7 +5,7 @@ def temporizador(r):
     final=t.time()
     tiempo= round(final-inicio,0)
     if tiempo > 5.0 :
-        print "sos una zorra"
+        print "lenta"
         print tiempo
         return r
     else:
