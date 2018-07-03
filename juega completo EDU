@@ -11,7 +11,8 @@ SELECCIONA UNA DE LAS OPCIONES:
 3. Salir
 
     """)
-    selection = raw_input("OPCION(1-3): ")
+    t.sleep(0.5)
+    selection = input("OPCION(1-3): ")
 
     return selection
 def menu2(): #la dificultad para el 1 jugador
@@ -24,6 +25,7 @@ selecciona la dificultad:
 
 4. regresar
 """)
+   t.sleep (1.0)
    selection = input("OPCION(1-4): ")
    return selection
 
@@ -66,7 +68,7 @@ def jugador1():
 
 
     for num in range(100):  # limpiar la patalla
-        print
+        print()
     print ('jugador 1')
 
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
@@ -94,7 +96,7 @@ def jugador1():
                 print ('letra equivocada')
                 if vidas == 0: #verificando si ya no tienes vidas
                     print ('Has perdido')
-                    print palabrasecretareal
+                    print (palabrasecretareal)
 
                     print ("acabo tu turno")
                     break
@@ -130,7 +132,7 @@ def jugador2():
 
 
     for num in range(100):  # limpiar la patalla
-        print
+        print()
     print ('jugador 2')
 
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
@@ -236,19 +238,19 @@ def dibujo(vida):
               |
         =========''']
     if vida ==6:
-        print ahorcado [0]
+        print (ahorcado [0])
     elif vida ==5:
-        print ahorcado[1]
+        print (ahorcado[1])
     elif vida == 4:
-        print ahorcado[2]
+        print (ahorcado[2])
     elif vida == 3:
-        print ahorcado[3]
+        print (ahorcado[3])
     elif vida == 2:
-        print ahorcado[4]
+        print (ahorcado[4])
     elif vida == 1:
-        print ahorcado[5]
+        print (ahorcado[5])
     elif vida == 0:
-        print ahorcado[6]
+        print (ahorcado[6])
 def dibujomedium(vida):
     ahorcado = ['''
           +---+
@@ -287,15 +289,15 @@ def dibujomedium(vida):
               |
         =========''']
     if vida ==4:
-        print ahorcado [0]
+        print (ahorcado [0])
     elif vida ==3:
-        print ahorcado[1]
+        print (ahorcado[1])
     elif vida == 2:
-        print ahorcado[2]
+        print (ahorcado[2])
     elif vida == 1:
-        print ahorcado[3]
+        print (ahorcado[3])
     elif vida == 0:
-        print ahorcado[4]
+        print (ahorcado[4])
 def dibujoadvance(vida):
     ahorcado = ['''
           +---+
@@ -320,11 +322,11 @@ def dibujoadvance(vida):
               |
         =========''']
     if vida ==2:
-        print ahorcado [0]
+        print (ahorcado [0])
     elif vida ==1:
-        print ahorcado[1]
+        print (ahorcado[1])
     elif vida == 0:
-        print ahorcado[2]
+        print (ahorcado[2])
 def easymode():
     lista_palabra = []
     incognito = []
@@ -366,7 +368,7 @@ def easymode():
 
                 if vidas == 0: #verificando si ya no tienes vidas
                     print ('Has perdido')
-                    print palabra
+                    print (palabra)
 
                     print ('Fin del juego.')
                     break
@@ -381,10 +383,10 @@ def easymode():
             ## Comprueba si ha terminado la partida
 
             if lista_palabra == incognito:  # verifica si has ganado
-                print palabra
-                print 'Has ganado'
+                print (palabra)
+                print ('Has ganado')
 
-                print 'Fin del juego.'
+                print ('Fin del juego.')
                 break
 
     return
@@ -407,7 +409,6 @@ def medium():
     while True:
         # Mostramos la palabra a adivinar
 
-        print ' '.join(incognito)
 
         # Pedimos una letra
         dibujomedium(vidas)
@@ -433,7 +434,7 @@ def medium():
 
                 if vidas == 0:  # verificando si ya no tienes vidas
                     print ('Has perdido')
-                    print palabra
+                    print (palabra)
 
                     print ('Fin del juego.')
                     break
@@ -448,10 +449,10 @@ def medium():
             ## Comprueba si ha terminado la partida
 
             if lista_palabra == incognito:  # verifica si has ganado
-                print palabra
-                print 'Has ganado'
+                print (palabra)
+                print ('Has ganado')
 
-                print 'Fin del juego.'
+                print ('Fin del juego.')
                 break
     return
 def advance():
@@ -473,7 +474,6 @@ def advance():
     while True:
         # Mostramos la palabra a adivinar
 
-        print ' '.join(incognito)
 
         # Pedimos una letra
         dibujoadvance(vidas)
@@ -481,7 +481,7 @@ def advance():
         print (' '.join(incognito))
 
         # Pedimos una letra
-        letrafake = raw_input('Dame una letra: ')
+        letrafake = input('Dame una letra: ')
         letra = letrafake.lower()
         if letra == palabra:
             print ("lo adivinaste, mis respetos")
