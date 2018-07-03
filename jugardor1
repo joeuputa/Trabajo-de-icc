@@ -64,82 +64,6 @@ def dibujo(vida):
         print ahorcado[5]
     elif vida == 0:
         print ahorcado[6]
-def dibujomedium(vida):
-    ahorcado = ['''
-          +---+
-          |   |
-              |
-              |
-              |
-              |
-        =========''', '''
-          +---+
-          |   |
-          O   |
-              |
-              |
-              |
-        =========''', '''
-          +---+
-          |   |
-          O   |
-          |   |
-              |
-              |
-        =========''', '''
-          +---+
-          |   |
-          O   |
-         /|\  |
-              |
-              |
-        =========''',  '''
-          +---+
-          |   |
-          O   |
-         /|\  |
-         / \  |
-              |
-        =========''']
-    if vida ==4:
-        print ahorcado [0]
-    elif vida ==3:
-        print ahorcado[1]
-    elif vida == 2:
-        print ahorcado[2]
-    elif vida == 1:
-        print ahorcado[3]
-    elif vida == 0:
-        print ahorcado[4]
-def dibujoadvance(vida):
-    ahorcado = ['''
-          +---+
-          |   |
-              |
-              |
-              |
-              |
-        =========''',  '''
-          +---+
-          |   |
-          O   |
-         /|\  |
-              |
-              |
-        =========''',  '''
-          +---+
-          |   |
-          O   |
-         /|\  |
-         / \  |
-              |
-        =========''']
-    if vida ==2:
-        print ahorcado [0]
-    elif vida ==1:
-        print ahorcado[1]
-    elif vida == 0:
-        print ahorcado[2]
 def verificando(tuletra): #identificando si es una letra
     cantidad= len(tuletra)
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?')
@@ -152,12 +76,12 @@ def verificando(tuletra): #identificando si es una letra
     else:
         tuletra.lower()
     return
-def easymode():
+def juego(words,vidas):
     lista_palabra = []
     incognito = []
-    vidas = 7
+
     letra = ''
-    words = ("acido", "aeropuerto", "alarma", "alegria", "bote", "cafe", "camping", "canoa", "curva","lago", "mesa", "misil", "postre", "radio")
+
     posicion = random.randint(0, len(words) - 1)
     palabra = words[posicion].lower()
 
@@ -190,6 +114,7 @@ def easymode():
                 print 'letra equivocada'
 
                 if vidas == 0: #verificando si ya no tienes vidas
+                    dibujo(vidas)
                     print 'Has perdido'
                     print palabra
                     break
@@ -209,123 +134,14 @@ def easymode():
                 break
 
     return
-def medium():
-    lista_palabra = []
-    incognito = []
-    vidas = 5
-    letra = ''
+vidas= 7
+words = ("acido", "aeropuerto", "alarma", "alegria", "bote", "cafe", "camping", "canoa", "curva","lago", "mesa", "misil", "postre", "radio")
+juego(words,vidas)
 
-    words = ("antibiotico", "arabe", "tunica", "ceramica", "oxigeno", "humanistico", "caoticos", "recondito", "zodiaco","rectangulo", "sepalo", "inequivoco", "obstaculo", "heterogeneo")
-    posicion = random.randint(0, len(words) - 1)
-    palabra = words[posicion].lower()
+vidas2=5
+words2=("antibiotico", "arabe", "tunica", "ceramica", "oxigeno", "humanistico", "caoticos", "recondito", "zodiaco","rectangulo", "sepalo", "inequivoco", "obstaculo", "heterogeneo")
+juego(words2,vidas2)
 
-    # Separamos la palabra en letras y lo colocamos en una lista
-
-    lista_palabra = list(palabra)
-    for item in lista_palabra:
-        incognito.append('_')
-
-    while True:
-        # Mostramos la palabra a adivinar
-
-        print ' '.join(incognito)
-
-        # Pedimos una letra
-        dibujomedium(vidas)
-        print "tienes", vidas, "vidas"
-        print ' '.join(incognito)
-
-        # Pedimos una letra
-        letrafake = raw_input('Dame una letra: ')
-        letra = letrafake.lower()
-        if letra == palabra:
-            print "lo adivinaste, mis respetos"
-            break
-
-        else:
-            verificando(letra)
-            # Comprueba si se ha equivocado
-            if letra not in lista_palabra:
-                # fallas
-                vidas = vidas - 1
-                print 'letra equivocada'
-
-                if vidas == 0:  # verificando si ya no tienes vidas
-                    print 'Has perdido'
-                    print palabra
-                    break
-
-            else:
-                # Adivinado, sustituimos
-
-                for pos, valor in enumerate(lista_palabra):
-                    if valor == letra:
-                        incognito[pos] = valor  # reemplazando el incognito por la palabra encontrada
-
-            ## Comprueba si ha terminado la partida
-
-            if lista_palabra == incognito:  # verifica si has ganado
-                print palabra
-                print 'Has ganado'
-                break
-    return
-def advance():
-    lista_palabra = []
-    incognito = []
-    vidas = 3
-    letra = ''
-
-    words = ("Desoxirribonucleico", "Hipopotomonstrosesquipedaliofobia", "Electrodomestico", "Paralelepipedo", "Metilendioximetanfetamina", "tu", "te", "yo", "Electrocardiograma")
-    posicion = random.randint(0, len(words) - 1)
-    palabra = words[posicion].lower()
-
-    # Separamos la palabra en letras y lo colocamos en una lista
-
-    lista_palabra = list(palabra)
-    for item in lista_palabra:
-        incognito.append('_')
-
-    while True:
-        # Mostramos la palabra a adivinar
-
-        print ' '.join(incognito)
-
-        # Pedimos una letra
-        dibujoadvance(vidas)
-        print "tienes", vidas, "vidas"
-        print ' '.join(incognito)
-
-        # Pedimos una letra
-        letrafake = raw_input('Dame una letra: ')
-        letra = letrafake.lower()
-        if letra == palabra:
-            print "lo adivinaste, mis respetos"
-            break
-
-        else:
-            verificando(letra)
-            # Comprueba si se ha equivocado
-            if letra not in lista_palabra:
-                # fallas
-                vidas = vidas - 1
-                print 'letra equivocada'
-
-                if vidas == 0:  # verificando si ya no tienes vidas
-                    print 'Has perdido'
-                    print palabra
-                    break
-
-            else:
-                # Adivinado, sustituimos
-
-                for pos, valor in enumerate(lista_palabra):
-                    if valor == letra:
-                        incognito[pos] = valor  # reemplazando el incognito por la palabra encontrada
-
-            ## Comprueba si ha terminado la partida
-
-            if lista_palabra == incognito:  # verifica si has ganado
-                print palabra
-                print 'Has ganado'
-                break
-    return
+vidas3=3
+words3=("Desoxirribonucleico", "Hipopotomonstrosesquipedaliofobia", "Electrodomestico", "Paralelepipedo", "Metilendioximetanfetamina", "tu", "te", "yo", "Electrocardiograma")
+juego(words3,vidas3)
