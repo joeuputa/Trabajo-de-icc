@@ -30,7 +30,7 @@ def jugador1():
     listaPalAdiv = []
     listaPalMost = []
     vidas = 7
-    print ('jugador 2')
+    print (chr(27)+"[0;30m"+'jugador 2')
     t.sleep(0.5)
     palabrasecreta = raw_input("ingresa la palabra secreta: ")
     while verificandopalabrasecreta(palabrasecreta) == False:
@@ -94,6 +94,7 @@ def jugador1():
 
             if listaPalAdiv==listaPalMost:
                 print ("ganaste")
+                print (palabrasecretareal)
                 t.sleep(1.0)
                 print ("acabo tu turno.")
                 break
@@ -104,7 +105,7 @@ def jugador2():
     listaPalAdiv = []
     listaPalMost = []
     vidas = 7
-    print ('jugador 1')
+    print (chr(27)+"[0;30m"+'jugador 1')
     t.sleep(0.5)
     palabrasecreta = raw_input("ingresa la palabra secreta: ")
     while verificandopalabrasecreta(palabrasecreta) == False:
@@ -166,9 +167,10 @@ def jugador2():
             ## Comprueba si ha terminado la partida
 
             if listaPalAdiv == listaPalMost:
-                print "ganaste"
+                print ("ganaste")
+                print (palabrasecretareal)
                 t.sleep(1.0)
-                print "acabo tu turno."
+                print ("acabo tu turno.")
                 break
     jugador1()
 
@@ -331,7 +333,7 @@ def easymode():
     lista_palabra = list(palabra)
     for contador in lista_palabra:
         incognito.append('_')
-
+    print (chr(27) + "[0;30m" + 'jugador 1')
     while True:
         # Mostramos la palabra a adivinar
         t.sleep(1.0)
@@ -402,11 +404,11 @@ def medium():
     lista_palabra = list(palabra)
     for contador in lista_palabra:
         incognito.append('_')
-
+    print (chr(27) + "[0;30m" + 'jugador 1')
     while True:
         # Mostramos la palabra a adivinar
         t.sleep(1.0)
-        dibujo(vidas)  # cambia de dibujo
+        dibujomedium(vidas)  # cambia de dibujo
         t.sleep(0.5)
         print ("tienes", vidas, "vidas")
         print (' '.join(incognito))
@@ -432,7 +434,7 @@ def medium():
                 print ('letra equivocada')
 
                 if vidas == 0:  # verificando si ya no tienes vidas
-                    dibujo(vidas)
+                    dibujomedium(vidas)
                     t.sleep(0.5)
                     print ('Has perdido')
                     t.sleep(0.5)
@@ -472,11 +474,11 @@ def advance():
     lista_palabra = list(palabra)
     for contador in lista_palabra:
         incognito.append('_')
-
+    print (chr(27) + "[0;30m" + 'jugador 1')
     while True:
         # Mostramos la palabra a adivinar
         t.sleep(1.0)
-        dibujo(vidas)  # cambia de dibujo
+        dibujoadvance(vidas)  # cambia de dibujo
         t.sleep(0.5)
         print ("tienes", vidas, "vidas")
         print (' '.join(incognito))
@@ -502,7 +504,7 @@ def advance():
                 print ('letra equivocada')
 
                 if vidas == 0:  # verificando si ya no tienes vidas
-                    dibujo(vidas)
+                    dibujoadvance(vidas)
                     t.sleep(0.5)
                     print ('Has perdido')
                     t.sleep(0.5)
@@ -530,7 +532,7 @@ def advance():
 
 #los menus del juego
 def menu(): #menu general
-    print("""
+    print(chr(27)+"[1;36m"+"""
   ____    .---.  .---.     ,-----.    .-------.        _______      ____     ______         ,-----.
  .'  __ `. |   |  |_ _|   .'  .-,  '.  |  _ _   \      /   __  \   .'  __ `. |    _ `''.   .'  .-,  '.
 /   '  \  \|   |  ( ' )  / ,-.|  \ _ \ | ( ' )  |     | ,_/  \__) /   '  \  \| _ | ) _  \ / ,-.|  \ _
@@ -543,9 +545,10 @@ def menu(): #menu general
 
 """)
     t.sleep(1.0)
-    print("""
+    print(chr(27)+"[4;32m"+"""
 
-SELECCIONA UNA DE LAS OPCIONES:
+SELECCIONA UNA DE LAS OPCIONES:""")
+    print(chr(27)+"[0;32m"+"""
 1. Un jugador
 2. Dos jugadores
 
@@ -556,15 +559,16 @@ SELECCIONA UNA DE LAS OPCIONES:
     selection = raw_input("OPCION(1-3): ")
     return selection #esto es lo que devuelve la funcion
 def menu2(): #la dificultad para el 1 jugador
-   print("""
+   print(chr(27)+"[4;33m"+"""
 
-selecciona la dificultad:
+SELECCIONA LA DIFICULTAD:""")
+   print(chr(27)+"[0;33m"+"""
 1. facil (7 vidas)
 2. medio (5 vidas)
 3. avanzado (3 vidas)
 
 4. regresar
-""")
+    """)
    t.sleep(0.5)
    selection = raw_input("OPCION(1-4): ")
    return selection #esto devuelve la funcion
