@@ -60,6 +60,13 @@ def jugador1():
             print ("verificando...")
             t.sleep(1.0)
             print ("lo adivinaste, ganaste")
+            print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
             t.sleep(0.5)
             print ("acabo tu turno")
             break
@@ -100,6 +107,13 @@ def jugador1():
 
             if listaPalAdiv==listaPalMost:
                 print ("ganaste")
+                print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
                 print (palabrasecretareal)
                 t.sleep(1.0)
                 print ("acabo tu turno.")
@@ -142,6 +156,13 @@ def jugador2():
             print ("verificando...")
             t.sleep(1.0)
             print ("lo adivinaste, ganaste")
+            print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
             t.sleep(0.5)
             print ("acabo tu turno")
             break
@@ -182,6 +203,13 @@ def jugador2():
 
             if listaPalAdiv == listaPalMost:
                 print ("ganaste")
+                print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
                 print (palabrasecretareal)
                 t.sleep(1.0)
                 print ("acabo tu turno.")
@@ -362,6 +390,13 @@ def easymode():
         if letra == palabra:
             t.sleep(0.5)
             print ("lo adivinaste, ganaste")
+            print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
             t.sleep(0.5)
             print ('Fin del juego.')
             t.sleep(1.5)
@@ -404,6 +439,13 @@ def easymode():
             if lista_palabra == incognito:  # verifica si has ganado
                 print (palabra)
                 print ('Has ganado')
+                print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
                 t.sleep(0.5)
                 print ('Fin del juego.')
                 break
@@ -439,6 +481,13 @@ def medium():
         if letra == palabra:
             t.sleep(0.5)
             print ("lo adivinaste, ganaste")
+            print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
             t.sleep(0.5)
             print ('Fin del juego.')
             t.sleep(1.5)
@@ -481,6 +530,13 @@ def medium():
             if lista_palabra == incognito:  # verifica si has ganado
                 print (palabra)
                 print ('Has ganado')
+                print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
                 t.sleep(0.5)
                 print ('Fin del juego.')
                 break
@@ -515,6 +571,13 @@ def advance():
         if letra == palabra:
             t.sleep(0.5)
             print ("lo adivinaste, ganaste")
+            print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
             t.sleep(0.5)
             print ('Fin del juego.')
             t.sleep(1.5)
@@ -557,6 +620,13 @@ def advance():
             if lista_palabra == incognito:  # verifica si has ganado
                 print (palabra)
                 print ('Has ganado')
+                print("""
+╔╦╦╦╦══╦╗╔╦╦╦╦╦╦═╦╦╗
+║║║║║╔╗║║║║║║║║║║║║║
+║╚╗╔╣╚╝║╚╝║║║║║║║║║║
+║.╚╝╚══╩══╝╚══╩╩╩═╝║
+╚══════════════════╝
+            """)
                 t.sleep(0.5)
                 print ('Fin del juego.')
                 break
