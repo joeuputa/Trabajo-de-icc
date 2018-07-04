@@ -1,9 +1,8 @@
 import time as t #utilizamos el sleep para que el juego sea un poco mas pausado
 import random
-
 #verificaciones
 def verificando(tuletra): #identificando si es una letra
-    cantidad= len(tuletra)
+    cantidad= len(tuletra)#
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?')
     if cantidad>1:
         print ("esa no es la palabra.")
@@ -11,8 +10,7 @@ def verificando(tuletra): #identificando si es una letra
     elif tuletra in numero:
         print ("eso no es una letra.")
         return
-    else:
-        tuletra.lower()
+
     return
 def verificandopalabrasecreta(palabrasecretareal):  # identificando si la palabra secreta ingresada tiene un numero
     numero = ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=','+', '`', '~', ' ', '[', '{', ']', '}', '|', ':', ';', "'", '<', ',', '.', '>', '/', '?', ''' " '''," ' ")
@@ -44,7 +42,7 @@ def jugador1():
     for num in range(100):  # limpiar la patalla
         print()
     print ('jugador 1')
-    t.sleep(1.0)
+    t.sleep(0.5)
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
         listaPalMost.append('_')
 
@@ -118,7 +116,7 @@ def jugador2():
     for num in range(100):  # limpiar la patalla
         print()
     print ('jugador 2')
-    t.sleep(1.0)
+    t.sleep(0.5)
     for item in listaPalAdiv:  # agrega '_' por cada letra que haya en la otra lista
         listaPalMost.append('_')
 
@@ -336,12 +334,12 @@ def easymode():
     print (chr(27) + "[0;30m" + 'jugador 1')
     while True:
         # Mostramos la palabra a adivinar
-        t.sleep(1.0)
-        dibujo(vidas)  # cambia de dibujo
         t.sleep(0.5)
+        dibujo(vidas)  # cambia de dibujo
+        t.sleep(1.0)
         print ("tienes", vidas, "vidas")
         print (' '.join(incognito))
-        t.sleep(0.5)
+
         # Pedimos una letra
         letrafake = input('Dame una letra: ')
         letra=letrafake.lower()
@@ -407,12 +405,11 @@ def medium():
     print (chr(27) + "[0;30m" + 'jugador 1')
     while True:
         # Mostramos la palabra a adivinar
-        t.sleep(1.0)
-        dibujomedium(vidas)  # cambia de dibujo
         t.sleep(0.5)
+        dibujomedium(vidas)  # cambia de dibujo
+        t.sleep(1.0)
         print ("tienes", vidas, "vidas")
         print (' '.join(incognito))
-        t.sleep(0.5)
         # Pedimos una letra
         letrafake = input('Dame una letra: ')
         letra = letrafake.lower()
@@ -477,12 +474,11 @@ def advance():
     print (chr(27) + "[0;30m" + 'jugador 1')
     while True:
         # Mostramos la palabra a adivinar
-        t.sleep(1.0)
-        dibujoadvance(vidas)  # cambia de dibujo
         t.sleep(0.5)
+        dibujoadvance(vidas)  # cambia de dibujo
+        t.sleep(1.0)
         print ("tienes", vidas, "vidas")
         print (' '.join(incognito))
-        t.sleep(0.5)
         # Pedimos una letra
         letrafake = input('Dame una letra: ')
         letra = letrafake.lower()
@@ -604,3 +600,4 @@ def ahorcado(): #el juego esta listo. eso creo?
    print("adios.")
 
 ahorcado()
+
