@@ -76,7 +76,15 @@ def jugador1():
                     dibujoadvance(vidas)
                     print ('Has perdido')
                     t.sleep(0.5)
-                    print (palabrasecretareal)
+                    print ("la palabra secreta es",palabrasecretareal)
+                    t.sleep(1.0)
+                    print ("""
+╔╦══╦═╦══╦═╦╦══╦╗╔╦═╦══╦╗
+║║╔═╣║║║║║═╣║╔╗║╚╝║═╣░║║
+║║╚╝║╩║║║║═╣║╚╝╠╗╔╣═╣╔╗╣║
+║╚══╩╩╩╩╩╩═╝╚══╝╚╝╚═╩╝╚╝║
+╚═══════════════════════╝
+            """)
                     t.sleep(1.0)
                     print ("acabo tu turno")
                     break
@@ -150,7 +158,15 @@ def jugador2():
                     dibujoadvance(vidas)
                     print ('Has perdido')
                     t.sleep(0.5)
-                    print (palabrasecretareal)
+                    print ("la palabra secreta es",palabrasecretareal)
+                    t.sleep(1.0)
+                    print ("""
+╔╦══╦═╦══╦═╦╦══╦╗╔╦═╦══╦╗
+║║╔═╣║║║║║═╣║╔╗║╚╝║═╣░║║
+║║╚╝║╩║║║║═╣║╚╝╠╗╔╣═╣╔╗╣║
+║╚══╩╩╩╩╩╩═╝╚══╝╚╝╚═╩╝╚╝║
+╚═══════════════════════╝
+            """)
                     t.sleep(1.0)
                     print ("acabo tu turno")
                     break
@@ -240,7 +256,7 @@ def dibujo(vida):
     elif vida == 1:
         print (ahorcado[5])
     elif vida == 0:
-        print (ahorcado[6])
+        print (chr(27)+"[0;31m"+ahorcado[6])
 def dibujomedium(vida):
     ahorcado = ['''
           +---+
@@ -287,7 +303,7 @@ def dibujomedium(vida):
     elif vida == 1:
         print (ahorcado[3])
     elif vida == 0:
-        print (ahorcado[4])
+        print (chr(27)+"[0;31m"+ahorcado[4])
 def dibujoadvance(vida):
     ahorcado = ['''
           +---+
@@ -316,7 +332,7 @@ def dibujoadvance(vida):
     elif vida ==1:
         print (ahorcado[1])
     elif vida == 0:
-        print (ahorcado[2])
+        print (chr(27)+"[0;31m"+ahorcado[2])
 def easymode():
     lista_palabra = []
     incognito = []
@@ -366,7 +382,14 @@ def easymode():
                     print ('Has perdido')
                     t.sleep(0.5)
                     print ("la palabra es",palabra)
-                    print ('Fin del juego.')
+                    print ("""
+╔╦══╦═╦══╦═╦╦══╦╗╔╦═╦══╦╗
+║║╔═╣║║║║║═╣║╔╗║╚╝║═╣░║║
+║║╚╝║╩║║║║═╣║╚╝╠╗╔╣═╣╔╗╣║
+║╚══╩╩╩╩╩╩═╝╚══╝╚╝╚═╩╝╚╝║
+╚═══════════════════════╝
+            """)
+                    t.sleep(1.0)
                     break
 
             else:
@@ -436,7 +459,14 @@ def medium():
                     print ('Has perdido')
                     t.sleep(0.5)
                     print ("la palabra es", palabra)
-                    print ('Fin del juego.')
+                    print ("""
+╔╦══╦═╦══╦═╦╦══╦╗╔╦═╦══╦╗
+║║╔═╣║║║║║═╣║╔╗║╚╝║═╣░║║
+║║╚╝║╩║║║║═╣║╚╝╠╗╔╣═╣╔╗╣║
+║╚══╩╩╩╩╩╩═╝╚══╝╚╝╚═╩╝╚╝║
+╚═══════════════════════╝
+            """)
+                    t.sleep(1.0)
                     break
 
             else:
@@ -505,7 +535,14 @@ def advance():
                     print ('Has perdido')
                     t.sleep(0.5)
                     print ("la palabra es", palabra)
-                    print ('Fin del juego.')
+                    print ("""
+╔╦══╦═╦══╦═╦╦══╦╗╔╦═╦══╦╗
+║║╔═╣║║║║║═╣║╔╗║╚╝║═╣░║║
+║║╚╝║╩║║║║═╣║╚╝╠╗╔╣═╣╔╗╣║
+║╚══╩╩╩╩╩╩═╝╚══╝╚╝╚═╩╝╚╝║
+╚═══════════════════════╝
+            """)
+                    t.sleep(1.0)
                     break
 
             else:
@@ -600,4 +637,3 @@ def ahorcado(): #el juego esta listo. eso creo?
    print("adios.")
 
 ahorcado()
-
